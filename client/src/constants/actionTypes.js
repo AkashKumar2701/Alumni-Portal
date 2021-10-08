@@ -1,0 +1,2 @@
+export const ALUMNI_SIGN_UP = 'ALUMNI_SIGN_UP';
+export const FACULTY_SIGN_UP = 'FACULTY_SIGN_UP';
