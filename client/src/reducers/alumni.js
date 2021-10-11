@@ -1,4 +1,4 @@
-export default (alumni = [], action) => {
+const reducer = (alumni = [], action) => {
     switch (action.type) {
         case 'FETCH_ALUMNI':
             console.log("Alumni", action.payload);
@@ -8,3 +8,4 @@ export default (alumni = [], action) => {
     }
 
 }
+export default reducer;

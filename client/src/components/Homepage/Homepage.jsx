@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 
 const Homepage = () => {
     const faculties = useSelector((state) => state.faculty);
     const alumnis = useSelector((state) => state.alumni);
-    // console.log("Faculty HOME", faculties);
-    // console.log("Alumni HOME", alumnis);
+    const [{ result: user }, setUser] = useState(localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')) : { result: null });
     return (
         <div>
-            Homepage
+            {user ? <h1>Welcome {user.userName}</h1> : <h1>Please Login To Continue</h1>}
         </div>
     )
 }

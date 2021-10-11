@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import {
   Avatar,
   Button,
@@ -11,8 +12,8 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 // import { useSelector } from "react-redux";
 
-// import { signin, signup } from "../../actions/auth";
-// import { AUTH, VALID } from "../../constants/actionTypes";
+import { facultySignin, facultySignup } from "../../actions/faculty";
+import { alumniSignin } from "../../actions/alumni";
 import useStyles from "./styles";
 import Input from "./Input";
 
@@ -29,6 +30,8 @@ const SignupSignin = () => {
   const [formData, setFormData] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const [isFaculty, setIsFaculty] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -53,7 +56,17 @@ const SignupSignin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isSignup) {
 
+      dispatch(facultySignup(formData, history))
+    } else {
+      if (isFaculty) {
+        dispatch(facultySignin(formData, history))
+      } else {
+        dispatch(alumniSignin(formData, history))
+
+      }
+    }
 
 
   };
