@@ -7,7 +7,7 @@ const Homepage = () => {
     const [{ result: user }, setUser] = useState(localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')) : { result: null });
     return (
         <div>
-            {user ? <h1>Welcome {user.userName}</h1> : <h1>Please Login To Continue</h1>}
+            {user ? <h1>Welcome User {user.userName}</h1> : <h1>Please Login To Continue</h1>}
         </div>
     )
 }
